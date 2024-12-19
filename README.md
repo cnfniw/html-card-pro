@@ -2,6 +2,9 @@
 
 一个强大而灵活的 Home Assistant 自定义卡片，允许您使用 HTML 模板创建完全自定义的界面。
 
+
+
+
 ## 特性
 
 - 完全自定义的 HTML/CSS 界面, 支持实体状态的实时更新
@@ -29,6 +32,77 @@ content: |
       <div class="state"></div>
     </div>
   </div>
+```
+
+
+### 提示词
+```
+你是 Home Assistant 的专业卡片设计助手，请帮助我创建一个强大且灵活的自定义卡片，功能包括完全自定义界面、实时更新实体状态、长按显示更多信息等。以下是详细要求：  
+### 功能需求：  
+- **完全自定义界面**：支持通过 HTML 和 CSS 自定义卡片布局和样式。  
+- **实时状态更新**：卡片应能够动态反映 Home Assistant 实体的实时状态。  
+- **交互控制**：支持长按显示实体的更多信息，提供亮度滑块调整功能。  
+- **扩展能力**：允许加载外部脚本，增加更多功能支持。
+### 卡片使用教程:
+type: custom:html-pro-card
+content: |
+  <div class="grid">
+    <div class="light-status" data-entity="light.living_room">
+      客厅灯
+      <div class="state"></div>
+    </div>
+  </div>
+### 配置需求：  
+- 基础配置应包括以下选项，并给出示例：  
+  - `content`: 定义 HTML 模板内容（必填）。  
+  - `entities`: 指定需要动态更新的实体列表。  
+  - `update_interval`: 设置更新频率（毫秒）。  
+  - `always_update`: 控制是否始终更新。  
+  - `do_not_parse`: 禁用模板解析的开关。  
+  - `scripts`: 指定需要加载的外部脚本 URL 列表。  
+### 示例模板设计：  
+1. **实体控制卡片**  
+   - 包括灯光状态显示、亮度滑块调整。  
+   - 使用 `data-entity` 属性绑定实体以实现自动更新。  
+2. **状态显示卡片**  
+   - 动态显示传感器的温度、湿度等信息。  
+### 样式要求：  
+- 提供 CSS 样式示例：  
+  - 支持自适应网格布局（grid）。  
+  - 样式与 Home Assistant 主题兼容（使用 CSS 变量）。  
+  - 确保设计的卡片外观精美且结构清晰。
+### 进阶功能：  
+1. **长按支持**  
+   - 使用 `data-long-press` 属性实现长按操作。  
+2. **动态更新**  
+   - 使用 Home Assistant 的模板语法反映实时状态：  
+     ```html
+     温度: {{ states('sensor.temperature') }}°C
+     湿度: {{ states('sensor.humidity') }}%
+     ```  
+3. **条件渲染**  
+   - 使用 Jinja 语法实现条件逻辑：  
+     ```html
+     {% if is_state('light.living_room', 'on') %}
+       <div class="status-on">灯已开启</div>
+     {% else %}
+       <div class="status-off">灯已关闭</div>
+     {% endif %}
+     ```  
+### 注意事项：  
+- 使用 `data-entity` 进行实体绑定以确保实时状态更新。  
+- 避免过于复杂的模板逻辑，确保卡片性能最佳，注意不支持三元运算符。
+- 使用 CSS 变量以支持不同主题。
+### 输出格式：  
+- 提供完整的 YAML 配置示例。  
+- 配套 HTML/CSS 模板代码，附带详细注释。  
+
+---
+
+**输出结果示例格式**：  
+- 生成的 YAML 配置文件  
+- 适配 HTML & CSS &JS 模板代码  
+
 ```
 
 ## 配置选项
