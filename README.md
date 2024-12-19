@@ -35,7 +35,7 @@ content: |
 ```
 
 
-### 提示词
+## 提示词
 ```
 你是 Home Assistant 的专业卡片设计助手，请帮助我创建一个强大且灵活的自定义卡片，功能包括完全自定义界面、实时更新实体状态、长按显示更多信息等。以下是详细要求：  
 ### 功能需求：  
@@ -118,7 +118,7 @@ content: |
 
 ## 模板示例
 
-### 基础灯光控制
+#### 基础灯光控制
 ```html
 <div class="light-card">
   <div class="light-status" data-entity="light.living_room" data-action="toggle">
@@ -133,7 +133,7 @@ content: |
 </div>
 ```
 
-### 状态显示
+#### 状态显示
 ```html
 <div class="sensor-card">
   <div class="sensor-value" data-entity="sensor.temperature">
@@ -142,7 +142,7 @@ content: |
 </div>
 ```
 
-## CSS 样式示例
+#### CSS 样式示例
 
 ```css
 <style>
@@ -174,7 +174,7 @@ content: |
 
 ## 进阶功能
 
-### 1. 长按支持
+#### 1. 长按支持
 添加 `data-long-press` 属性以启用长按显示更多信息：
 ```html
 <div class="entity-card" 
@@ -184,7 +184,7 @@ content: |
 </div>
 ```
 
-### 2. 动态更新
+#### 2. 动态更新
 使用 Home Assistant 的模板语法获取实时状态：
 ```html
 <div class="sensor-display">
@@ -193,7 +193,7 @@ content: |
 </div>
 ```
 
-### 3. 条件渲染
+#### 3. 条件渲染
 ```html
 {% if is_state('light.living_room', 'on') %}
   <div class="status-on">灯已开启</div>
@@ -202,14 +202,14 @@ content: |
 {% endif %}
 ```
 
-## 故障排除
+### 故障排除
 
 1. 如果卡片无法加载，请检查浏览器控制台是否有错误信息
 2. 确保所有实体ID正确且存在
 3. 检查模板语法是否正确
 4. 确认外部脚本URL是否可访问
 
-## 注意事项
+### 注意事项
 
 - 建议使用 `data-entity` 属性绑定实体，便于自动更新
 - 避免过于复杂的模板，可能影响性能
