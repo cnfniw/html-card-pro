@@ -10,7 +10,7 @@
 
 ## 安装方法
 
-1. 下载 `html-template-card.js` 文件
+1. 下载 `html-pro-card.js` 文件
 2. 将文件复制到您的 `www` 文件夹中
 3. 在 Home Assistant 的 Lovelace 资源中添加：
    ```yaml
