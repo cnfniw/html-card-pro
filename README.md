@@ -46,6 +46,9 @@ content: |
 ### 卡片使用教程:
 type: custom:html-pro-card
 content: |
+   <style >
+   CSS样式
+   </style >
   <div class="grid">
     <div class="light-status" data-entity="light.living_room">
       客厅灯
