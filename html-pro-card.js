@@ -1,7 +1,7 @@
 import { html } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module";
 
-if (!customElements.get('ha-textarea')) {
-  customElements.define('ha-textarea', class extends HTMLElement {
+if (!customElements.get('ha-htmlcard-textarea')) {
+  customElements.define('ha-htmlcard-textarea', class extends HTMLElement {
     constructor() {
       super();
       this.attachShadow({ mode: 'open' });
@@ -41,8 +41,8 @@ if (!customElements.get('ha-textarea')) {
   });
 }
 
-if (!customElements.get('ha-textfield')) {
-  customElements.define('ha-textfield', class extends HTMLElement {
+if (!customElements.get('ha-htmlcard-textfield')) {
+  customElements.define('ha-htmlcard-textfield', class extends HTMLElement {
     constructor() {
       super();
       this.attachShadow({ mode: 'open' });
@@ -86,8 +86,8 @@ if (!customElements.get('ha-textfield')) {
   });
 }
 
-if (!customElements.get('ha-switch')) {
-  customElements.define('ha-switch', class extends HTMLElement {
+if (!customElements.get('ha-htmlcard-switch')) {
+  customElements.define('ha-htmlcard-switch', class extends HTMLElement {
     constructor() {
       super();
       this.attachShadow({ mode: 'open' });
@@ -161,8 +161,8 @@ if (!customElements.get('ha-switch')) {
   });
 }
 
-if (!customElements.get('ha-formfield')) {
-  customElements.define('ha-formfield', class extends HTMLElement {
+if (!customElements.get('ha-htmlcard-formfield')) {
+  customElements.define('ha-htmlcard-formfield', class extends HTMLElement {
     constructor() {
       super();
       this.attachShadow({ mode: 'open' });
@@ -218,26 +218,26 @@ class HtmlTemplateCardEditor extends HTMLElement {
     const container = document.createElement('div');
     container.className = 'card-config';
 
-    const textarea = document.createElement('ha-textarea');
+    const textarea = document.createElement('ha-htmlcard-textarea');
     textarea.label = "HTML内容";
     textarea.rows = 8;
     textarea.value = this._config.content || '';
     textarea.className = 'editor-control';
     textarea.addEventListener('change', this._handleContentChange);
 
-    const parseSwitch = document.createElement('ha-switch');
+    const parseSwitch = document.createElement('ha-htmlcard-switch');
     parseSwitch.checked = this._config.do_not_parse || false;
     parseSwitch.addEventListener('change', this._handleParseChange);
 
-    const parseField = document.createElement('ha-formfield');
+    const parseField = document.createElement('ha-htmlcard-formfield');
     parseField.innerHTML = '<span slot="label">禁用模板解析</span>';
     parseField.prepend(parseSwitch);
 
-    const lineBreakSwitch = document.createElement('ha-switch');
+    const lineBreakSwitch = document.createElement('ha-htmlcard-switch');
     lineBreakSwitch.checked = this._config.ignore_line_breaks || false;
     lineBreakSwitch.addEventListener('change', this._handleLineBreaksChange);
 
-    const lineBreakField = document.createElement('ha-formfield');
+    const lineBreakField = document.createElement('ha-htmlcard-formfield');
     lineBreakField.innerHTML = '<span slot="label">忽略换行</span>';
     lineBreakField.prepend(lineBreakSwitch);
 
@@ -245,7 +245,7 @@ class HtmlTemplateCardEditor extends HTMLElement {
     scriptsTitle.className = 'script-title';
     scriptsTitle.textContent = '脚本';
 
-    const scriptsField = document.createElement('ha-textfield');
+    const scriptsField = document.createElement('ha-htmlcard-textfield');
     scriptsField.type = "url";
     scriptsField.placeholder = "https://cdn.jsdelivr.net/";
     scriptsField.className = 'editor-control';
@@ -264,7 +264,7 @@ class HtmlTemplateCardEditor extends HTMLElement {
         const scriptItem = document.createElement('div');
         scriptItem.className = 'script-item';
         
-        const input = document.createElement('ha-textfield');
+        const input = document.createElement('ha-htmlcard-textfield');
         input.type = "url";
         input.value = script;
         input.className = 'editor-control script-input';
@@ -292,7 +292,7 @@ class HtmlTemplateCardEditor extends HTMLElement {
       const scriptItem = document.createElement('div');
       scriptItem.className = 'script-item';
       
-      const input = document.createElement('ha-textfield');
+      const input = document.createElement('ha-htmlcard-textfield');
       input.type = "url";
       input.value = url;
       input.className = 'editor-control script-input';
@@ -318,7 +318,7 @@ class HtmlTemplateCardEditor extends HTMLElement {
     scriptsContainer.appendChild(addButton);
     scriptsContainer.appendChild(scriptsList);
 
-    const intervalField = document.createElement('ha-textfield');
+    const intervalField = document.createElement('ha-htmlcard-textfield');
     intervalField.label = "更新间隔(ms)";
     intervalField.type = "number";
     intervalField.value = this._config.update_interval || 0;
@@ -344,7 +344,7 @@ class HtmlTemplateCardEditor extends HTMLElement {
       .values {
         padding-bottom: 16px;
       }
-      ha-formfield {
+      ha-htmlcard-formfield {
         padding-right: 16px;
         display: block;
       }
@@ -379,7 +379,7 @@ class HtmlTemplateCardEditor extends HTMLElement {
       .script-input {
         width: calc(100% - 48px);
       }
-      ha-textarea {
+      ha-htmlcard-textarea {
         resize: none;
       }
       mwc-button {
@@ -391,12 +391,12 @@ class HtmlTemplateCardEditor extends HTMLElement {
 
   _updateScripts() {
     const scripts = [];
-    const mainInput = this.querySelector('ha-textfield[type="url"]');
+    const mainInput = this.querySelector('ha-htmlcard-textfield[type="url"]');
     if (mainInput && mainInput.value.trim()) {
       scripts.push(mainInput.value.trim());
     }
     
-    this.querySelectorAll('.script-item ha-textfield').forEach(input => {
+    this.querySelectorAll('.script-item ha-htmlcard-textfield').forEach(input => {
       if (input.value.trim()) {
         scripts.push(input.value.trim());
       }
