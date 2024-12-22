@@ -313,7 +313,7 @@ class HtmlTemplateCardEditor extends LitElement {
           color: var(--primary-text-color);
         }
         .interval-input {
-          width: 80px;
+          width: 50px;
           margin-left: 4px;
         }
         .script-section {
@@ -378,13 +378,14 @@ class HtmlTemplateCardEditor extends LitElement {
           <div class="switch-description">启用此选项将忽略 HTML 内容中的换行符，使输出更紧凑。</div>
 
           <div class="interval-row">
-            <div class="interval-title">更新间隔（ms）</div>
+            <div class="interval-title">更新间隔</div>
             <ha-htmlcard-textfield
               type="number"
               class="interval-input"
               .value="${this._config.update_interval || 0}"
               @change="${this._handleIntervalChange}"
             ></ha-htmlcard-textfield>
+            <span style="color: var(--primary-text-color); margin-left: 24px;">ms</span>
           </div>
           <div class="switch-description">设置模板自动更新的时间间隔（毫秒），设为 0 则禁用自动更新，建议可以调整到1000ms左右。</div>
 
